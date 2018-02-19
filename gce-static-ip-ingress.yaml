@@ -1,0 +1,32 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: public-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: "public-static-ip"
+    kubernetes.io/ingress.class: "gce"
+spec:
+  tls:
+  - secretName: tls-secret
+  rules:
+  - host: app.indiraactive.com # test echoserver 
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: http-svc
+          servicePort: 80
+  - host: chatauth.api.indiraactive.com # smooch-jwt
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: smooch-jwt
+          servicePort: 8080
+  - host: fulfillment.corp.indiraactive.com # fulfillmet-platform
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: fulfillment-platform
+          servicePort: 8089
