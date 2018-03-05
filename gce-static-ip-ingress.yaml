@@ -16,17 +16,24 @@ spec:
         backend:
           serviceName: http-svc
           servicePort: 80
-  - host: chatauth.api.indiraactive.com # smooch-jwt
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: smooch-jwt
-          servicePort: 8080
+  # - host: chatauth.api.indiraactive.com # smooch-jwt
+  #   http:
+  #     paths:
+  #     - path: /
+  #       backend:
+  #         serviceName: smooch-jwt
+  #         servicePort: 8080
   - host: fulfillment.corp.indiraactive.com # fulfillmet-platform
     http:
       paths:
       - path: /
+        backend:
+          serviceName: fulfillment-platform
+          servicePort: 8089
+  - host: fulfillment.corp.indiraactive.com # fulfillmet-platform
+    http:
+      paths:
+      - path: /*
         backend:
           serviceName: fulfillment-platform
           servicePort: 8089
