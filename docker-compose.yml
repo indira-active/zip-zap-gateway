@@ -1,0 +1,10 @@
+version: '3.5'
+services:
+  smooch-jwt:
+    image: salesforce/dockerfile-image-update
+    environment:
+        - git_api_token=$git_api_token
+        - git_api_url=$git_api_url
+    command: dockerfile-image-update all <IMG_TAG_STORE>
+
+# docker-compose run --rm
